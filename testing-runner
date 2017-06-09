@@ -1,0 +1,26 @@
+#!/usr/bin/env luajit
+-- -*- mode: lua -*-
+local testing = require "testing"
+
+function main(args)
+    local logger
+    local tests = {}
+    for _, arg in ipairs(args) do
+        if arg == "-v" then
+            logger = testing.VerboseLogger
+        elseif arg == "-q" then
+            logger = testing.QuietLogger
+        else
+            arg = arg:rstrip(".lua")
+            tests[arg] = require(arg)
+        end
+    end
+    local runner = testing.TestRunner.new {
+        tests  = tests,
+        logger = logger,
+    }
+    runner:run()
+    return runner.totals:status()
+end
+
+os.exit(main(arg))
