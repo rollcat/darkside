@@ -87,6 +87,12 @@ function QuietLogger:log_totals(totals)
 end
 
 
+local NullLogger = {}
+function NullLogger:log_start(...) end
+function NullLogger:log_result(name, ok, err) end
+function NullLogger:log_totals(totals) end
+
+
 local TestRunner = {}
 function TestRunner.new(args)
     this = {
@@ -120,6 +126,7 @@ end
 
 return {
     QuietLogger   = QuietLogger,
+    NullLogger    = NullLogger,
     TestRunner    = TestRunner,
     TestTotals    = TestTotals,
     VerboseLogger = VerboseLogger,
