@@ -8,6 +8,11 @@ function pass()
     error("pass", 0)
 end
 
+function must_fail(f, ...)
+    local ok = pcall(f, ...)
+    if ok then error("Did not fail", 2) end
+end
+
 
 local TestTotals = {}
 function TestTotals.new()
@@ -118,6 +123,7 @@ return {
     TestRunner    = TestRunner,
     TestTotals    = TestTotals,
     VerboseLogger = VerboseLogger,
+    must_fail     = must_fail,
     pass          = pass,
     skip          = skip,
 }
