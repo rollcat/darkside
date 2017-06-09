@@ -15,7 +15,7 @@ function main(args)
             tests[arg] = require(arg)
         end
     end
-    local runner = testing.TestRunner.new {
+    local runner = testing.TestRunner:new {
         tests  = tests,
         logger = logger,
     }

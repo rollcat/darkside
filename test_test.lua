@@ -23,7 +23,7 @@ function t:test_must_fail()
 end
 
 function t:test_recursive_runner()
-    local runner = testing.TestRunner.new {
+    local runner = testing.TestRunner:new {
         logger = testing.NullLogger,
         tests = {
             test_recursive_runner = {

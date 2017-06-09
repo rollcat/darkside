@@ -15,7 +15,7 @@ end
 
 
 local TestTotals = {}
-function TestTotals.new()
+function TestTotals.new(cls)
     this = {
         ok   = {},
         skip = {},
@@ -94,9 +94,9 @@ function NullLogger:log_totals(totals) end
 
 
 local TestRunner = {}
-function TestRunner.new(args)
+function TestRunner.new(cls, args)
     this = {
-        totals = TestTotals.new(),
+        totals = TestTotals:new(),
         tests  = assert(args.tests),
         logger = args.logger or QuietLogger,
     }
