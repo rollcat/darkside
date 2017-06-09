@@ -32,9 +32,6 @@ function TestTotals.new()
             #self.skip,
             #self.fail
         )
-        for _, t in ipairs(self.fail) do
-            print("fail:", t.name, t.err)
-        end
         print(s)
     end
     function this:status()
@@ -78,6 +75,9 @@ function QuietLogger:log_result(name, ok, err)
 end
 function QuietLogger:log_totals(totals)
     io.write("\n")
+    for _, t in ipairs(totals.fail) do
+        print("fail:", t.name, t.err)
+    end
     totals:print_result()
 end
 
