@@ -1,6 +1,6 @@
 #!/bin/sh
 set -eu
-tests=./test_*.lua
+tests=tests/test_*.lua
 for lua in luajit lua5.1 lua5.2
 do
     if which $lua

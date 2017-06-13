@@ -1,5 +1,6 @@
 #!/usr/bin/env luajit
 -- -*- mode: lua -*-
+package.path = "./lib/?.lua;" .. package.path
 local testing = require "testing"
 
 function main(args)
