@@ -14,6 +14,7 @@ local function new(cls, args)
     local self = {}
     args = args or {}
     setmetatable(self, {__index=cls})
+    self.cls = cls
     if self.init then
         self:init(args)
     else
@@ -22,7 +23,6 @@ local function new(cls, args)
             self[k] = v
         end
     end
-    self.cls = cls
     return self
 end
 

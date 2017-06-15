@@ -128,4 +128,13 @@ function t:test_inheritance_custom_inherit()
     assert(Tiger.base == Cat)
 end
 
+function t:test_cls()
+    local Cat = class {}
+    function Cat:init(args)
+        assert(self.cls, "Cat.cls")
+    end
+    local x = Cat:new()
+    assert(x.cls == Cat)
+end
+
 return t
