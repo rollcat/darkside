@@ -31,3 +31,7 @@ upload.docker: build.docker
 		--entrypoint /bin/sh \
 		openresty/openresty:alpine-fat \
 		-c "cd /build && opm upload"
+
+clean:
+mrproper: clean
+	rm -rf darkside-*
